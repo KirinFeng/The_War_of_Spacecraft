@@ -1,7 +1,7 @@
 void mousePressed() {
   //Home Page-------------------------------------------------
   if (playGame==0) {
-    if (abs(mouseX-150)<60&&abs(mouseY-340)<30) {
+    if (abs(mouseX-100)<60&&abs(mouseY-340)<30) {
       gameMode=1;
       playGame=1;
       a=51;//boss Health
@@ -10,7 +10,7 @@ void mousePressed() {
       life=20;
       score=0;
     }
-    if (abs(mouseX-150)<60&&abs(mouseY-420)<30) {
+    if (abs(mouseX-100)<60&&abs(mouseY-420)<30) {
       gameMode=2;
       playGame=1;
       a=51;//boss Health
@@ -19,16 +19,16 @@ void mousePressed() {
       life=20;
       score=0;
     }
-    if (abs(mouseX-150)<60&&abs(mouseY-500)<30) {
+    if (abs(mouseX-100)<60&&abs(mouseY-500)<30) {
       playGame=2;//"Setting" Button
     }
-    if (abs(mouseX-150)<60&&abs(mouseY-580)<30) {
+    if (abs(mouseX-100)<60&&abs(mouseY-580)<30) {
       playGame=3;//"Help" Button
     }
-    if (abs(mouseX-150)<60&&abs(mouseY-660)<30) {
+    if (abs(mouseX-100)<60&&abs(mouseY-660)<30) {
       playGame=4;//"About" Button
     }
-    if (abs(mouseX-150)<60&&abs(mouseY-740)<30) {
+    if (abs(mouseX-100)<60&&abs(mouseY-740)<30) {
       exit();//"Exit" Button
     }
   } else {
@@ -50,13 +50,10 @@ void mousePressed() {
     
     if (abs(mouseX-width/2+200)<50&&abs(mouseY-500)<40) {
       bgc=0;
-      println(1);
     } else if (abs(mouseX-width/2)<50&&abs(mouseY-500)<40) {
       bgc=1;
-      println(2);
     } else if (abs(mouseX-width/2-200)<50&&abs(mouseY-500)<40) {
       bgc=2;
-      println(3);
     }
     
     if (abs(mouseX-width/2+200)<50&&abs(mouseY-700)<40) {
