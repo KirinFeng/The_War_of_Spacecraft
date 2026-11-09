@@ -1,6 +1,6 @@
-class Forzen {
+class Frozen {
   float x, y;
-  Forzen() {
+  Frozen() {
     x=random(width);
     y=-200;
   }

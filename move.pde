@@ -2,7 +2,6 @@
 void move() {
   float angleSped = 1;
   if (play && keyPressed) {
-    println(gameMode);
     if (keys['a']) {
       x -= sped;
     }

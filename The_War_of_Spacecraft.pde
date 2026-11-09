@@ -27,13 +27,13 @@ ArrayList<Player2Ball>balls2=new ArrayList<Player2Ball>();
 ArrayList<Youjun>youjuns=new ArrayList<Youjun>();
 ArrayList<Buji>buji=new ArrayList<Buji>();
 ArrayList<Boos>boos=new ArrayList<Boos>();
-ArrayList<Forzen>forzens=new ArrayList<Forzen>();
+ArrayList<Frozen>frozens=new ArrayList<Frozen>();
 ArrayList<Shield>shields=new ArrayList<Shield>();
 ArrayList<Speed>speeds=new ArrayList<Speed>();
 int score=1;
 int life=20;
 int index=0;
-int time=300, forzenTime=-999, shieldTime=-999, speedTime=-999;
+int time=300, frozenTime=-999, shieldTime=-999, speedTime=-999;
 int boosx, boosy;
 float a=51;//boss health
 int  playGame=0;
@@ -97,12 +97,12 @@ void draw() {
       background(155);
       textSize(50);
       fill(255);
-      text("You lost\nPress 'r' to try agin", width/2, height/2);
+      text("You lost\nPress 'r' to try again", width/2, height/2);
     } else if (index>6) {
       background(0);
       fill(random(150, 255), random(150, 255), random(150, 255));
       textSize(80);
-      text("Contragtulation!!!", width/2, height/2-150);
+      text("Congratulations!!!", width/2, height/2-150);
       text("You Win!!!", width/2, height/2-50);
     }
     // Six button on Home Page------------------------
@@ -192,7 +192,7 @@ void draw() {
       for (int i=0; i<ps.length; i++) {
         ps[i].show();
         if (play)
-          if (frameCount-forzenTime>200)ps[i].move();
+          if (frameCount-frozenTime>200)ps[i].move();
       }
     }
     //balls.add(new Ball(300,300));
@@ -210,7 +210,6 @@ void draw() {
       }
     }
     if (gameMode == 2) {
-      println(123);
       Iterator<Player2Ball>it2= balls2.iterator();
       while (it2.hasNext()) {
 
@@ -219,7 +218,7 @@ void draw() {
         if (play)
           b2.move();
         if (b2.isDead()||abs(b2.x2-boosx)<50&&b2.y2<boosy-50) {
-          it.remove();
+          it2.remove();
         }
         if (abs(b2.x2-boosx)<50&&abs(b2.y2-boosy)<50) {
           a-=0.03;//ammo damage
@@ -231,7 +230,7 @@ void draw() {
     while (yo.hasNext()) {
       Youjun you=yo.next();
       you.show();
-      if (frameCount-forzenTime>200)you.move();//prop going down-------
+      if (frameCount-frozenTime>200)you.move();//prop going down-------
       if (abs(x-you.youjunX)<25&&abs(y-you.youjunY)<25) {
         yo.remove();
         flag=true;
@@ -246,19 +245,19 @@ void draw() {
       }
     }
     //Freeze
-    Iterator<Forzen>fo= forzens.iterator();
+    Iterator<Frozen>fo= frozens.iterator();
     while (fo.hasNext()) {
-      Forzen one=fo.next();
+      Frozen one=fo.next();
       one.show();
-      if (frameCount-forzenTime>200)one.move();
+      if (frameCount-frozenTime>200)one.move();
       if (abs(x-one.x)<25&&abs(y-one.y)<25) {
         fo.remove();
-        forzenTime = frameCount;
+        frozenTime = frameCount;
       }
       if (gameMode == 2) {
         if (abs(x2-one.x)<25&&abs(y2-one.y)<25) {
           fo.remove();
-          forzenTime = frameCount;
+          frozenTime = frameCount;
         }
       }
     }
@@ -284,7 +283,7 @@ void draw() {
     while (b.hasNext()) {
       Buji buji=b.next();
       buji.show();
-      if (frameCount-forzenTime>200)buji.move();
+      if (frameCount-frozenTime>200)buji.move();
       if (abs(x-buji.bujiX)<25&&abs(y-buji.bujiY)<25) {
         b.remove();
         life+=5;
@@ -334,7 +333,7 @@ void draw() {
     }
     //boos
     if (index==6) {
-      if (frameCount-forzenTime>200)boos.add(new Boos(boosx, boosy));
+      if (frameCount-frozenTime>200)boos.add(new Boos(boosx, boosy));
 
       stroke(255, 0, 0);
       line(0, 30, width, 30);
@@ -368,7 +367,7 @@ void draw() {
       rect(boosx-24, boosy-54, a, 8);//Current Boss Health
       rectMode(CENTER);
       //----------------------------------------
-      if (frameCount%300==0 && frameCount-forzenTime>200) {
+      if (frameCount%300==0 && frameCount-frozenTime>200) {
         boosx=(int)random(width);
       }
       if (a<0) {
@@ -490,7 +489,7 @@ void draw() {
     }
     //freeze more
     if (frameCount%600==300) {
-      forzens.add(new Forzen());
+      frozens.add(new Frozen());
     }
     //shield more
     if (frameCount%800==0) {

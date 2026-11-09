@@ -1,0 +1,10 @@
+# Processing editor autosave files
+*.autosave
+
+# Processing export output
+application.*/
+out/
+
+# OS files
+.DS_Store
+Thumbs.db
